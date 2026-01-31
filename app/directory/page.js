@@ -2,12 +2,12 @@
 
 import Sidebar from '../components/Sidebar';
 import { useClients } from '../context/ClientContext';
-import { ArrowUpRight, Trash2, Eye } from 'lucide-react';
+import { ArrowUpRight, Trash2, Eye, Key } from 'lucide-react';
 import Link from 'next/link';
 import ActionMenu from '../components/ActionMenu';
 
 export default function DirectoryPage() {
-    const { clients, deleteClient } = useClients();
+    const { clients, deleteClient, updateClient } = useClients();
 
     // Filter for Active/Closed
     const ACTIVE_STAGES = ['closed'];
@@ -61,6 +61,22 @@ export default function DirectoryPage() {
                                             onClick: (e) => {
                                                 e.stopPropagation();
                                                 window.location.href = `/clients/${client.id}`;
+                                            }
+                                        },
+                                        {
+                                            label: 'Generate Access',
+                                            icon: <Key size={14} />,
+                                            onClick: (e) => {
+                                                e.stopPropagation();
+                                                const password = Math.random().toString(36).slice(-8);
+                                                const email = client.email || `${client.name.toLowerCase().replace(/\s+/g, '')}@portal.com`;
+
+                                                updateClient(client.id, {
+                                                    portalEmail: email,
+                                                    portalPassword: password
+                                                });
+
+                                                alert(`Portal Access Generated!\n\nEmail: ${email}\nPassword: ${password}`);
                                             }
                                         },
                                         {
