@@ -20,7 +20,7 @@ export default function DirectoryPage() {
             <main style={{ flex: 1, display: 'flex', flexDirection: 'column', background: 'white', overflowY: 'auto' }}>
                 <header style={{ height: '70px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 40px', borderBottom: '1px solid var(--border)' }}>
                     <div>
-                        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Active Client Directory</h2>
+                        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Active Client Directory (Updated)</h2>
                         <p style={{ color: '#666', fontSize: '0.9rem' }}>Managing {activeClients.length} closed/active accounts</p>
                     </div>
                     <button style={{ padding: '10px 20px', borderRadius: '8px', background: 'black', color: 'white', fontWeight: 'bold' }}>
